@@ -32,6 +32,7 @@
 		89758D2A1F2FC18500A8557F /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89758D291F2FC18500A8557F /* OAuth2.framework */; };
 		89758D2D1F2FEB1F00A8557F /* YelpAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89758D2C1F2FEB1F00A8557F /* YelpAccount.swift */; };
 		89758D2F1F2FEF2B00A8557F /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89758D2E1F2FEF2B00A8557F /* Locksmith.framework */; };
+		89758D311F2FFA0900A8557F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89758D301F2FFA0900A8557F /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		89758D291F2FC18500A8557F /* OAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuth2.framework; path = Carthage/Build/iOS/OAuth2.framework; sourceTree = "<group>"; };
 		89758D2C1F2FEB1F00A8557F /* YelpAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAccount.swift; sourceTree = "<group>"; };
 		89758D2E1F2FEF2B00A8557F /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
+		89758D301F2FFA0900A8557F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			children = (
 				89758D0E1F2FA1E200A8557F /* PermissionsController.swift */,
 				89758D2C1F2FEB1F00A8557F /* YelpAccount.swift */,
+				89758D301F2FFA0900A8557F /* LocationManager.swift */,
 			);
 			name = Permissions;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				89758D0D1F2F9CE600A8557F /* JSONDecodable.swift in Sources */,
 				89758D231F2FA4FE00A8557F /* Address.swift in Sources */,
 				89758D091F2F973200A8557F /* YelpBusiness.swift in Sources */,
+				89758D311F2FFA0900A8557F /* LocationManager.swift in Sources */,
 				89758D0B1F2F99CE00A8557F /* YelpCategory.swift in Sources */,
 				89758D1D1F2FA48600A8557F /* YelpTransaction.swift in Sources */,
 				89758D171F2FA37300A8557F /* ReviewCell.swift in Sources */,

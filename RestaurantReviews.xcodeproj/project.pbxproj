@@ -29,6 +29,9 @@
 		89758D231F2FA4FE00A8557F /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89758D221F2FA4FE00A8557F /* Address.swift */; };
 		89758D251F2FA51E00A8557F /* BusinessHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89758D241F2FA51E00A8557F /* BusinessHours.swift */; };
 		89758D271F2FA55100A8557F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89758D261F2FA55100A8557F /* Endpoint.swift */; };
+		89758D2A1F2FC18500A8557F /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89758D291F2FC18500A8557F /* OAuth2.framework */; };
+		89758D2D1F2FEB1F00A8557F /* YelpAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89758D2C1F2FEB1F00A8557F /* YelpAccount.swift */; };
+		89758D2F1F2FEF2B00A8557F /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89758D2E1F2FEF2B00A8557F /* Locksmith.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		89758D221F2FA4FE00A8557F /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		89758D241F2FA51E00A8557F /* BusinessHours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessHours.swift; sourceTree = "<group>"; };
 		89758D261F2FA55100A8557F /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		89758D291F2FC18500A8557F /* OAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuth2.framework; path = Carthage/Build/iOS/OAuth2.framework; sourceTree = "<group>"; };
+		89758D2C1F2FEB1F00A8557F /* YelpAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAccount.swift; sourceTree = "<group>"; };
+		89758D2E1F2FEF2B00A8557F /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89758D2A1F2FC18500A8557F /* OAuth2.framework in Frameworks */,
+				89758D2F1F2FEF2B00A8557F /* Locksmith.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +82,7 @@
 			children = (
 				89758CEC1F2F73F000A8557F /* RestaurantReviews */,
 				89758CEB1F2F73F000A8557F /* Products */,
+				89758D281F2FC18500A8557F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				89758D0E1F2FA1E200A8557F /* PermissionsController.swift */,
+				89758D2C1F2FEB1F00A8557F /* YelpAccount.swift */,
 			);
 			name = Permissions;
 			sourceTree = "<group>";
@@ -155,6 +165,15 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
+		89758D281F2FC18500A8557F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89758D2E1F2FEF2B00A8557F /* Locksmith.framework */,
+				89758D291F2FC18500A8557F /* OAuth2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,6 +184,7 @@
 				89758CE61F2F73F000A8557F /* Sources */,
 				89758CE71F2F73F000A8557F /* Frameworks */,
 				89758CE81F2F73F000A8557F /* Resources */,
+				89758D2B1F2FC19C00A8557F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -223,6 +243,24 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		89758D2B1F2FC19C00A8557F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/OAuth2.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Locksmith.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		89758CE61F2F73F000A8557F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -235,6 +273,7 @@
 				89758D211F2FA4E800A8557F /* Coordinate.swift in Sources */,
 				89758D151F2FA33400A8557F /* YelpReviewsDataSource.swift in Sources */,
 				89758D111F2FA2A200A8557F /* YelpBusinessDetailController.swift in Sources */,
+				89758D2D1F2FEB1F00A8557F /* YelpAccount.swift in Sources */,
 				89758D1B1F2FA44D00A8557F /* YelpReview.swift in Sources */,
 				89758D131F2FA2FF00A8557F /* YelpBusinessDetailViewModel.swift in Sources */,
 				89758D0F1F2FA1E200A8557F /* PermissionsController.swift in Sources */,
@@ -372,6 +411,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 997RL2KYD9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RestaurantReviews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeffripke.RestaurantReviews;
@@ -385,6 +428,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 997RL2KYD9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RestaurantReviews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeffripke.RestaurantReviews;
@@ -412,6 +459,7 @@
 				89758CFE1F2F73F000A8557F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -12,7 +12,7 @@
         <!--Yelp Search Controller-->
         <scene sceneID="haQ-3s-RPJ">
             <objects>
-                <viewController id="WbZ-au-dMg" userLabel="Yelp Search Controller" sceneMemberID="viewController">
+                <viewController id="WbZ-au-dMg" userLabel="Yelp Search Controller" customClass="YelpSearchController" customModule="RestaurantReviews" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ET0-xd-SHo"/>
                         <viewControllerLayoutGuide type="bottom" id="qPd-88-aoD"/>
@@ -56,6 +56,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="QTW-f3-C2T"/>
                     <connections>
+                        <outlet property="tableView" destination="wd5-4W-o3p" id="4cA-Ti-j6H"/>
                         <segue destination="REb-H3-gYi" kind="show" identifier="showBusiness" id="Uqr-ee-JRs"/>
                     </connections>
                 </viewController>
@@ -66,8 +67,8 @@
         <!--Yelp Business Detail Controller Scene-->
         <scene sceneID="4Te-d0-iWf">
             <objects>
-                <tableViewController title="Yelp Business Detail Controller Scene" id="REb-H3-gYi" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="eIB-Ro-TmW">
+                <tableViewController title="Yelp Business Detail Controller Scene" id="REb-H3-gYi" customClass="YelpBusinessDetailController" customModule="RestaurantReviews" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="90" sectionHeaderHeight="18" sectionFooterHeight="18" id="eIB-Ro-TmW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -148,12 +149,35 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewCell" id="g8l-4e-ldS">
-                                <rect key="frame" x="0.0" y="215.5" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewCell" rowHeight="90" id="g8l-4e-ldS">
+                                <rect key="frame" x="0.0" y="215.5" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g8l-4e-ldS" id="AK2-ED-qDY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="81g-qR-VlL">
+                                            <rect key="frame" x="16" y="16" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="X74-Zv-UY1"/>
+                                                <constraint firstAttribute="width" constant="60" id="bbJ-Ho-kl5"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oy2-8t-XVK">
+                                            <rect key="frame" x="84" y="8" width="283" height="73.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="81g-qR-VlL" firstAttribute="top" secondItem="AK2-ED-qDY" secondAttribute="top" constant="16" id="2T6-3N-O2o"/>
+                                        <constraint firstAttribute="bottom" secondItem="Oy2-8t-XVK" secondAttribute="bottom" constant="8" id="EIv-lj-aBb"/>
+                                        <constraint firstItem="Oy2-8t-XVK" firstAttribute="top" secondItem="AK2-ED-qDY" secondAttribute="top" constant="8" id="P6S-x8-rvM"/>
+                                        <constraint firstItem="81g-qR-VlL" firstAttribute="leading" secondItem="AK2-ED-qDY" secondAttribute="leading" constant="16" id="Rp0-ho-b93"/>
+                                        <constraint firstAttribute="trailing" secondItem="Oy2-8t-XVK" secondAttribute="trailing" constant="8" id="ZQi-M4-iga"/>
+                                        <constraint firstItem="Oy2-8t-XVK" firstAttribute="leading" secondItem="81g-qR-VlL" secondAttribute="trailing" constant="8" id="wBC-em-3cu"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -162,6 +186,14 @@
                             <outlet property="delegate" destination="REb-H3-gYi" id="TN0-YL-JwE"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="categoriesLabel" destination="xJd-Bc-OnI" id="eTj-MV-pwt"/>
+                        <outlet property="currentHoursStatusLabel" destination="WPf-i3-i2o" id="OBR-4L-UBV"/>
+                        <outlet property="hoursLabel" destination="5v8-Jb-G64" id="MYs-cv-2Qc"/>
+                        <outlet property="priceLabel" destination="6zg-cb-JvI" id="IUG-PN-rFy"/>
+                        <outlet property="ratingsCountLabel" destination="Tx0-5W-AdC" id="e3k-ES-sMd"/>
+                        <outlet property="restaurantNameLabel" destination="HGq-wt-Nwb" id="DN2-L3-ebh"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uex-xg-tZO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

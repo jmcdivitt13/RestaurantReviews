@@ -14,11 +14,19 @@ enum LocationError: Error {
     case disallowedByUser
     case unableToFindLocation
 }
+
+protocol LocationPermissionsDelegate: class {
+    func authorizationSucceeded()
+    func authorizationFailedWithStatus(_ status: CLAuthorizationStatus)
+}
+
 class LocationManager: NSObject, CLLocationManagerDelegate {
     
     private let manager = CLLocationManager()
+    weak var permissionDelegate: LocationPermissionsDelegate?
     
-    override init() {
+    init(permissionsDelagate: LocationPermissionsDelegate?) {
+        self.permissionDelegate = permissionsDelagate
         super.init()
         manager.delegate = self
     }
@@ -31,6 +39,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             manager.requestWhenInUseAuthorization()
         } else {
             return
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            permissionDelegate?.authorizationSucceeded()
+        } else {
+            permissionDelegate?.authorizationFailedWithStatus(status)
         }
     }
 }

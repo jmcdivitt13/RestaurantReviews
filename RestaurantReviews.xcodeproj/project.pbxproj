@@ -34,6 +34,7 @@
 		89758D2F1F2FEF2B00A8557F /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89758D2E1F2FEF2B00A8557F /* Locksmith.framework */; };
 		89758D311F2FFA0900A8557F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89758D301F2FFA0900A8557F /* LocationManager.swift */; };
 		898E45171F30DF7F006FCD6F /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E45161F30DF7F006FCD6F /* APIClient.swift */; };
+		898E45191F30E886006FCD6F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E45181F30E886006FCD6F /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		89758D2E1F2FEF2B00A8557F /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
 		89758D301F2FFA0900A8557F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		898E45161F30DF7F006FCD6F /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		898E45181F30E886006FCD6F /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				89758D0C1F2F9CE600A8557F /* JSONDecodable.swift */,
 				89758D261F2FA55100A8557F /* Endpoint.swift */,
 				898E45161F30DF7F006FCD6F /* APIClient.swift */,
+				898E45181F30E886006FCD6F /* Result.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				89758D131F2FA2FF00A8557F /* YelpBusinessDetailViewModel.swift in Sources */,
 				89758D0F1F2FA1E200A8557F /* PermissionsController.swift in Sources */,
 				89758CEE1F2F73F000A8557F /* AppDelegate.swift in Sources */,
+				898E45191F30E886006FCD6F /* Result.swift in Sources */,
 				89758D1F1F2FA4BD00A8557F /* YelpUser.swift in Sources */,
 				89758D271F2FA55100A8557F /* Endpoint.swift in Sources */,
 				89758D0D1F2F9CE600A8557F /* JSONDecodable.swift in Sources */,

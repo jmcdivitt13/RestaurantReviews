@@ -17,6 +17,12 @@ class YelpSearchController: UIViewController {
     
     let dataSource = YelpSearchResultsDataSource()
     
+    lazy var locationManager: LocationManager = {
+        return LocationManager(delegate: self, permissionsDelagate: nil)
+    }()
+    
+    var coordinate: Coordinate?
+    
     var isAuthorized: Bool {
         let isAuthorizedWithYelpToken = YelpAccount.isAuthorized
         let isAuthorizedForLocation = LocationManager.isAuthorized
@@ -30,7 +36,9 @@ class YelpSearchController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if !isAuthorized {
+        if isAuthorized {
+            locationManager.requestLocation()
+        } else {
             checkPermissions()
         }
     }
@@ -83,5 +91,18 @@ extension YelpSearchController {
         if segue.identifier == "showBusiness" {
             
         }
+    }
+}
+
+// MARK: - Location Manager Delegate
+
+extension YelpSearchController: LocationManagerDelegate {
+    func obtainCoordinates(_ coordinate: Coordinate) {
+        self.coordinate = coordinate
+        print(coordinate)
+    }
+    
+    func failedWithError(_ error: LocationError) {
+        print(error)
     }
 }

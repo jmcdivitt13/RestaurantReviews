@@ -77,7 +77,7 @@ class PermissionsController: UIViewController, LocationPermissionsDelegate {
         fatalError("init coder not implemented")
     }
     
-    init(isAuthorizedForLocation locationAuthorization: Bool, isAuthenticatedWithToken tokenAuthorization: Bool) {
+    init(isAuthorizedForLocation locationAuthorization: Bool, isAuthorizedWithToken tokenAuthorization: Bool) {
         self.isAuthorizedForLocation = locationAuthorization
         self.isAuthenticatedWithToken = tokenAuthorization
         super.init(nibName: nil, bundle: nil)

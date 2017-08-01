@@ -20,7 +20,7 @@ class PermissionsController: UIViewController, LocationPermissionsDelegate {
             "keychain": false
         ])
     lazy var locationManager: LocationManager = {
-        return LocationManager(permissionsDelagate: self)
+        return LocationManager(delegate: nil, permissionsDelagate: self)
     }()
     
     var isAuthorizedForLocation: Bool
@@ -77,9 +77,9 @@ class PermissionsController: UIViewController, LocationPermissionsDelegate {
         fatalError("init coder not implemented")
     }
     
-    init(isAuthorizedForLocation authorized: Bool, isAuthenticatedWithToken authenticated: Bool) {
-        self.isAuthorizedForLocation = authorized
-        self.isAuthenticatedWithToken = authenticated
+    init(isAuthorizedForLocation locationAuthorization: Bool, isAuthenticatedWithToken tokenAuthorization: Bool) {
+        self.isAuthorizedForLocation = locationAuthorization
+        self.isAuthenticatedWithToken = tokenAuthorization
         super.init(nibName: nil, bundle: nil)
     }
     

@@ -9,6 +9,13 @@
 import Foundation
 import CoreLocation
 
+extension Coordinate {
+    init(location: CLLocation) {
+        self.latitude = location.coordinate.latitude
+        self.longitude = location.coordinate.longitude
+    }
+}
+
 enum LocationError: Error {
     case unkownError
     case disallowedByUser
@@ -28,14 +35,22 @@ protocol LocationManagerDelegate: class {
 class LocationManager: NSObject, CLLocationManagerDelegate {
     
     private let manager = CLLocationManager()
-    weak var permissionDelegate: LocationPermissionsDelegate?
+    weak var permissionsDelegate: LocationPermissionsDelegate?
     weak var delegate: LocationManagerDelegate?
     
     init(delegate: LocationManagerDelegate?, permissionsDelagate: LocationPermissionsDelegate?) {
         self.delegate = delegate
-        self.permissionDelegate = permissionsDelagate
+        self.permissionsDelegate = permissionsDelagate
         super.init()
         manager.delegate = self
+    }
+    
+    static var isAuthorized: Bool {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+            return true
+        default: return false
+        }
     }
     
     func requestLocationAuthorization() throws {
@@ -55,9 +70,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
-            permissionDelegate?.authorizationSucceeded()
+            permissionsDelegate?.authorizationSucceeded()
         } else {
-            permissionDelegate?.authorizationFailedWithStatus(status)
+            permissionsDelegate?.authorizationFailedWithStatus(status)
         }
     }
     
@@ -74,5 +89,14 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         default:
             return
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else {
+            delegate?.failedWithError(.unableToFindLocation)
+            return
+        }
+        let coordinate = Coordinate(location: location)
+        delegate?.obtainCoordinates(coordinate)
     }
 }
